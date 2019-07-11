@@ -11,9 +11,10 @@ public class GlavnaKlasa {
 											new ClassPathXmlApplicationContext("spring.xml"); 
 		
 		
-		Profesor prof = context.getBean(Profesor.class,"profaLikovnog");
+		Profesor prof = context.getBean("profaLikovnogSlikanje",Profesor.class);
 		
 		System.out.println(prof.pozdrav());
+		System.out.println(prof.dajMiPredmetKojiPredajem());
 
 	}
 

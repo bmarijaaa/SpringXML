@@ -5,14 +5,43 @@
     http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
     http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 	
+	<context:property-placeholder location="mojPropertifajl.properties"/>
 	
-	<bean name="mojOmiljeniProfesor" class="springpaket.ProfesorMatematike">
+	<bean id="mojOmiljeniProfesor" class="springpaket.ProfesorMatematike">
+		<property name="ime" value="${mojOmiljeniProfesor.ime}"/> <!-- value injection -->
+		<constructor-arg name="predmet" ref ="predmetAlgebra"/> <!-- constructor injection -->
 	</bean>
 	
-	<bean name="profaLikovnog" class="springpaket.ProfesorLikovnog">
+	<bean id="mojOmiljeniProfesorMatematike" class="springpaket.ProfesorMatematike">
+		<constructor-arg name="ime" value="Pitagora"/> 	<!-- constructor injection -->
+		<constructor-arg name="predmet" ref ="predmetGeometrija"/>	<!-- constructor injection -->
+	</bean>
+	
+	<bean id="profaLikovnogSlikanje" class="springpaket.ProfesorLikovnog">
+		<property name="ime" value="${profaLikovnogSlikanje.ime}"/> <!-- value injection -->
+		<property name="predmet" ref = "predmetSlikanje"/><!-- setter injection -->
+	</bean>
+	
+	<bean id="profaLikovnogVajanje" class="springpaket.ProfesorLikovnog">
+		<property name="ime" value="Mikelandjelo"/>
+		<property name="predmet" ref = "predmetVajanje"/>
 	</bean>
 
+    <bean id = "predmetVajanje" class="springpaket.Predmet">
+    	<property name="imePredmeta" value = "vajanje"/>
+    </bean>
     
+    <bean id = "predmetSlikanje" class="springpaket.Predmet">
+    	<property name="imePredmeta" value = "slikanje"/>
+    </bean>
+    
+    <bean id = "predmetAlgebra" class="springpaket.Predmet">
+    	<property name="imePredmeta" value = "algebra"/>
+    </bean>
+    
+    <bean id = "predmetGeometrija" class="springpaket.Predmet">
+    	<property name="imePredmeta" value = "geometrija"/>
+    </bean>
     
 
 </beans>
